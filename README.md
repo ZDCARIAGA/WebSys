@@ -1,69 +1,51 @@
-# CodeIgniter 4 Application Starter
+# POS System - IT0049 TFA2
 
-## What is CodeIgniter?
+A simple Point of Sale web application created using CodeIgniter 4 and MySQL.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Requirements
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
-
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
-
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
-
-## Installation & updates
-
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+- PHP 8.2 or later
+- Composer
+- MySQL
+- CodeIgniter 4
+- XAMPP
 
 ## Setup
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+1. Clone or download this repository.
+2. Start Apache and MySQL in XAMPP.
+3. Create a MySQL database named `pos_db`.
+4. Import `database/pos_db.sql` using phpMyAdmin.
+5. Copy the `env` file and rename the copy to `.env`.
+6. Configure the database settings in `.env`:
 
-## Important Change with index.php
+    database.default.hostname = localhost
+    database.default.database = pos_db
+    database.default.username = root
+    database.default.password =
+    database.default.DBDriver = MySQLi
+    database.default.port = 3306
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+7. Open a terminal in the project directory and run:
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+    php spark serve
 
-**Please** read the user guide for a better explanation of how CI4 works!
+8. Open `http://localhost:8080` in a browser.
 
-## Repository Management
+## Pages
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+- Home
+- About
+- Customer Accounts
+- User Accounts
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## Database
 
-## Server Requirements
+The database contains the following tables:
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+- `customers`
+- `users`
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+The SQL database export is located at:
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+`database/pos_db.sql`
